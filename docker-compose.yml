@@ -1,0 +1,65 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:11.13
+    container_name: postgres
+    env_file:
+      - ./t1.env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: 10s
+      retries: 5
+      timeout: 5s
+
+  client-processing:
+    image: client-processing:latest
+    build:
+      context: ./client-processing
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./t1.env
+    environment:
+      SERVER_PORT: 8082
+    ports:
+      - "8082:8082"
+
+  account-processing:
+    image: account-processing:latest
+    build:
+      context: ./account-processing
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./t1.env
+    environment:
+      SERVER_PORT: 8081
+    ports:
+      - "8081:8081"
+
+  credit-processing:
+    image: credit-processing:latest
+    build:
+      context: ./credit-processing
+      dockerfile: Dockerfile
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - ./t1.env
+    environment:
+      SERVER_PORT: 8083
+    ports:
+      - "8083:8083"
+
+volumes:
+  postgres-data:
