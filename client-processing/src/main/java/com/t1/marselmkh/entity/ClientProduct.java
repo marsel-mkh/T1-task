@@ -20,8 +20,8 @@ public class ClientProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long clientId;
-    private Long productId;
+    private String clientId;
+    private String productId;
 
     private LocalDate openDate;
     private LocalDate closeDate;

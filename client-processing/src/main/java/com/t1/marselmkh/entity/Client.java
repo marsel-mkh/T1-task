@@ -24,7 +24,6 @@ public class Client {
     @Column(nullable = false, unique = true)
     private String clientId;
 
-    @Column(nullable = false)
     private Long userId;
 
     private String firstName;

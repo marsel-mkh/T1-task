@@ -21,6 +21,22 @@ spring:
     default-schema: public
     change-log: classpath:db/changelog/db.changelog-master.xml
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      group-id: client-service-group
+      key-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+
 server:
   port: 8082
+
+kafka:
+  topic:
+    client-products: "client-products"
+    client-cards: "client-cards"
+    credit-products: "client_credit_products"
 
