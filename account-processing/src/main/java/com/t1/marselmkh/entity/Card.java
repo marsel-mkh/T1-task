@@ -24,5 +24,6 @@ public class Card {
 
     private String paymentSystem;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }

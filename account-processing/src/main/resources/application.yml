@@ -21,5 +21,15 @@ spring:
     default-schema: public
     change-log: classpath:db/changelog/db.changelog-master.xml
 
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: account-processing
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
+
 server:
   port: 8081

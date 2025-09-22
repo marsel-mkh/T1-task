@@ -1,6 +1,6 @@
 package com.t1.marselmkh.service;
 
-import com.t1.marselmkh.dto.CardCreateDto;
+import com.t1.marselmkh.dto.CardEventDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class CardService {
     private final CardKafkaProducer kafkaProducer;
 
-    public void createCard(CardCreateDto cardCreateDto) {
-        kafkaProducer.sendCard(cardCreateDto);
+    public void createCard(CardEventDto cardEventDto) {
+        kafkaProducer.sendCard(cardEventDto);
     }
 }

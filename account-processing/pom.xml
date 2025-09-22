@@ -24,16 +24,23 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Validation API (Hibernate Validator через Spring Boot Starter) -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
+            <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
                 <!-- Liquibase -->
-                <dependency>
-                    <groupId>org.liquibase</groupId>
-                    <artifactId>liquibase-core</artifactId>
-                </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.18.0</version>
+        </dependency>
 
         <!-- PostgreSQL -->
         <dependency>
@@ -41,6 +48,24 @@
             <artifactId>postgresql</artifactId>
             <version>42.7.7</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!--  Kafka -->
+        <dependency>
+            <groupId>org.springframework.kafka</groupId>
+            <artifactId>spring-kafka</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- MapStruct -->
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.5.5.Final</version>
         </dependency>
 
         <!-- Lombok -->

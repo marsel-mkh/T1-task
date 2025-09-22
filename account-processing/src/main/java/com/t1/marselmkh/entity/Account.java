@@ -33,5 +33,6 @@ public class Account {
 
     private Boolean cardExist;
 
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 }
