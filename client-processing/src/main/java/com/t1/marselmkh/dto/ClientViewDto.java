@@ -10,7 +10,6 @@ import java.time.LocalDate;
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class ClientViewDto {
-    String email;
     String firstName;
     String middleName;
     String lastName;

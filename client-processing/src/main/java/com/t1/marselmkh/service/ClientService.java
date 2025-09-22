@@ -1,6 +1,7 @@
 package com.t1.marselmkh.service;
 
 import com.t1.marselmkh.dto.ClientCreateDto;
+import com.t1.marselmkh.dto.ClientViewDto;
 import com.t1.marselmkh.dto.UserViewDto;
 import com.t1.marselmkh.entity.Client;
 import com.t1.marselmkh.entity.User;
@@ -51,5 +52,15 @@ public class ClientService {
         UserViewDto userViewDto = userMapper.toUserViewDto(user);
         log.info("Регистрация завершена успешно: userId={}", user.getId());
         return userViewDto;
+    }
+
+    public ClientViewDto getClientById(Long id) {
+        Client user = clientRepository.findById(id)
+                .orElseThrow(() -> {
+                    log.error("Клиент с id {} не найден", id);
+                    return new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found");
+                });
+        log.info("Клиент найден: id={}", id);
+        return clientMapper.toViewDto(user);
     }
 }
