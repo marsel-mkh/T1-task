@@ -1,4 +1,4 @@
-package com.t1.marselmkh.dto.ClientProductDto;
+package com.t1.marselmkh.dto;
 
 import com.t1.marselmkh.entity.Status;
 import lombok.AccessLevel;
@@ -14,5 +14,7 @@ public class ClientProductEventDto {
      String productId;
      Status status;
      BigDecimal loanAmount;
+     Double interestRate;
+     Integer monthCount;
 
 }

@@ -24,13 +24,13 @@ public class KafkaConsumer {
     }
 
     @KafkaListener(topics = "client_transactions", groupId = "account-processing")
-    public void consumeTransaction() {
+    public void transactionConsumer() {
         log.info("Получено событие client_transactions");
         transactionService.createTransaction();
     }
 
     @KafkaListener(topics = "client_cards", groupId = "account-processing")
-    public void consumeCard(@Valid CardEventDto cardEventDto) {
+    public void cardConsumer(@Valid CardEventDto cardEventDto) {
         log.info("Получено событие client_cards: {}", cardEventDto);
         cardService.createCard(cardEventDto);
     }

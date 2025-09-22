@@ -19,7 +19,7 @@ public class ClientProductValidation {
     }
 
     private void productExists(String productId) {
-        if (!productRepository.existByProductId(productId))
+        if (!productRepository.existsByProductId(productId))
             throw new ProductNotFoundException("Product with productId " + productId + " not found");
     }
 

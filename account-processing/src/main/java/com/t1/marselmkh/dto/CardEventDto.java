@@ -1,11 +1,11 @@
 package com.t1.marselmkh.dto;
 
+import com.t1.marselmkh.entity.Status;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
-
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Data
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,6 +21,6 @@ public class CardEventDto {
     String paymentSystem;
 
     @NotBlank(message = "status cannot be blank")
-    String status;
+    Status status;
 
 }

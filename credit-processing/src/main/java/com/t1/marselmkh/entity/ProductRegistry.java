@@ -20,13 +20,15 @@ public class ProductRegistry {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long clientId;
+    private String clientId;
 
     private Long accountId;
 
-    private Long productId;
+    private String productId;
 
     private Double interestRate;
 
     private LocalDate openDate;
+
+    private Integer monthCount;
 }

@@ -4,7 +4,8 @@ spring:
       - org.springframework.boot.autoconfigure.r2dbc.R2dbcAutoConfiguration
 
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/t1db}
+    #    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://postgres:5432/t1db}
+    url: jdbc:postgresql://localhost:5432/t1db
     username: ${SPRING_DATASOURCE_USERNAME:postgres}
     password: ${SPRING_DATASOURCE_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
@@ -28,8 +29,10 @@ spring:
       value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
     consumer:
       group-id: client-group
-      key-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
-      value-deserializer: org.apache.kafka.common.serialization.JsonDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+    properties:
+      spring.json.trusted.packages: "*"
 
 server:
   port: 8082

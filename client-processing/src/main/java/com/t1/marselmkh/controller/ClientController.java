@@ -1,16 +1,15 @@
 package com.t1.marselmkh.controller;
 
 import com.t1.marselmkh.dto.ClientCreateDto;
+import com.t1.marselmkh.dto.ClientViewDto;
 import com.t1.marselmkh.dto.UserViewDto;
 import com.t1.marselmkh.service.ClientService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -26,5 +25,11 @@ public class ClientController {
 
         UserViewDto userViewDto = clientService.userRegistration(clientCreateDto);
         return ResponseEntity.status(HttpStatus.CREATED).body(userViewDto);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ClientViewDto> getClientById(@PathVariable @NotNull Long id) {
+        clientService.getClientById(id);
+        return ResponseEntity.ok().build();
     }
 }
